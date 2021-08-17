@@ -12,4 +12,4 @@ Admin Side allows user CRUD
 * npm install
 * ionic serve
 
-#Laravel Setup
+# Laravel Setup
