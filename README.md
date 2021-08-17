@@ -8,6 +8,6 @@ Email Verification.
 Admin Side allows user CRUD
 
 # Ionic Setup
- git clone * copy & paste* 
+ git clone *copy & paste url* 
 * npm install
 * ionic serve
