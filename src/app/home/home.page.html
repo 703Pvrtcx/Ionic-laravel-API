@@ -1,22 +1,110 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      User Manager
-    </ion-title>
+
+<!-- <ion-header >
+  <ion-toolbar color="warning">
+      <ion-buttons slot="start" >
+          <ion-menu-button>
+              <ion-icon name="apps"></ion-icon>
+          </ion-menu-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
+<ion-content color="dark" >
 
-<ion-content >
-  <ion-header >
-    <ion-toolbar>
-      <ion-title size="large">Welcome</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card color="warning">
+    <ion-card-header>
+      <ion-card-title>Administration</ion-card-title>
+      <ion-card-subtitle>Add New User</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
 
-  <div id="container">
-    <ion-button fill="clear" color="primary" size="small" slot="end" (click)="goLogin()">
-      Go to Login
-  </ion-button>
+        <ion-list clAss="ion-margin" color="danger" >
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <ion-item  color="dark">
+                <ion-label position ="floating" for="firstname">First Name</ion-label>
+                <ion-input id="username" type="text" placeholder="First Name" formControlName="firstname" clAss="form-control" [ngClAss]="{ 'is-invalid': submitted && f.firstname.errors }" ></ion-input>
+                <div *ngIf="submitted && f.firstname.errors" clAss="invalid-feedback">
+                  <div *ngIf="f.firstname.errors.required">Name is required</div>
+            </div>
+              </ion-item>
+            <ion-item color="dark">
+              <ion-label position ="floating" for="email">Email</ion-label>
+              <ion-input  id="floatingInput" type="text" placeholder="name@example.com" formControlName="email" clAss="form-control" [ngClAss]="{ 'is-invalid': submitted && f.email.errors }"></ion-input>
+              <div *ngIf="submitted && f.email.errors" clAss="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+             </div>
+            </ion-item>
+          <ion-item color="dark">
+            <ion-label position ="floating" for="username">PAssword</ion-label>
+            <ion-input id="floatingPAssword" type="pAssword" placeholder="PAssword" formControlName="pAssword" clAss="form-control" [ngClAss]="{ 'is-invalid': submitted && f.pAssword.errors }" ></ion-input>
+            <div *ngIf="submitted && f.pAssword.errors" clAss="invalid-feedback">
+               <div *ngIf="f.pAssword.errors.required">PAssword is required</div>
+            </div>
+          </ion-item>
+          
+        
+        <ion-row >
+          <ion-col >
+           <ion-button clAss="btn btn-primary" id="regidter" type="submit" name="registerSubmit" expand="block"  color="warning"  shape="round">
+                   Add Student
+           </ion-button>
+          </ion-col>
+        </ion-row>
 
-  </div>
+          </form>
+        </ion-list>
+
+    </ion-card-content>
+
+  </ion-card>
+
+   
+</ion-content> -->
+
+
+<ion-content color="medium">
+  <ion-card color="dark" class="ion-text-center">
+        <ion-img src="../../assets/img/Teklink/logo.png"></ion-img>
+        <ion-card-header>
+          <ion-card-title>Welcome to Teklink</ion-card-title>
+       </ion-card-header>
+       <ion-card-content>
+         <ion-card-subtitle>Registration System</ion-card-subtitle>
+       </ion-card-content>
+  </ion-card>
+
+    <ion-grid fixed>
+      <ion-row clAss="ion-justify-content-center">
+        <ion-col size="6"> 
+          <ion-card color="danger" class="ion-text-center"  (click)="goRegisterAdmin()">
+            <ion-card-header>
+            <ion-card-subtitle>Manager</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              Register As Administrator
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card color="tertiary" class="ion-text-center"  (click)="goRegisterUser()">
+            <ion-card-header>
+               <ion-card-subtitle>Staff</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              Register As Employee
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="12">
+          <ion-card class="ion-text-center">
+                <ion-card-content>
+                  <ion-button (click)="goToWelcome()" expand="block" fill="clear" shape="round">
+                    Click me
+                  </ion-button>
+                </ion-card-content>
+          </ion-card>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 </ion-content>
