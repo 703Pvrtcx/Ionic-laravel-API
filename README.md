@@ -11,3 +11,5 @@ Admin Side allows user CRUD
  git clone *copy & paste url* 
 * npm install
 * ionic serve
+
+#Laravel Setup
