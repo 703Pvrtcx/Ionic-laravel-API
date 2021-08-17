@@ -12,5 +12,5 @@ Admin Side allows user CRUD
 * npm install
 * ionic serve
 
-# Laravel Setup
+# Laravel API Setup
 * php artisan serve
