@@ -7,12 +7,16 @@ import { UserDashboardPage } from './Pages/User/user-dashboard/user-dashboard.pa
 const routes: Routes = [
   {
     path: 'welcome',
-    loadChildren: () => import('./welcome/welcome.module').then( m => m.WelcomePageModule)
+    loadChildren: () => import('./Pages/welcome/welcome.module').then( m => m.WelcomePageModule)
   },
   {
     path: '',
-    redirectTo: 'welcome',
+    redirectTo: 'products',
     pathMatch: 'full'
+  },
+  {
+    path: 'products',
+    loadChildren: () => import('./Pages/Product/products/products.module').then( m => m.ProductsPageModule)
   },
   {
     path: 'home',
@@ -79,7 +83,26 @@ const routes: Routes = [
     path: 'user-dashboard',
     loadChildren: () => import('./Pages/User/user-dashboard/user-dashboard.module').then( m => m.UserDashboardPageModule)
   },
-
+  {
+    path: 'products',
+    loadChildren: () => import('./Pages/Product/products/products.module').then( m => m.ProductsPageModule)
+  },
+  {
+    path: 'detail',
+    loadChildren: () => import('./pages/product/detail/detail.module').then( m => m.DetailPageModule)
+  },
+  {
+    path: 'details',
+    loadChildren: () => import('./pages/product/details/details.module').then( m => m.DetailsPageModule)
+  },
+  {
+    path: 'add-product',
+    loadChildren: () => import('./pages/product/add-product/add-product.module').then( m => m.AddProductPageModule)
+  },
+  {
+    path: 'update',
+    loadChildren: () => import('./Pages/Product/update/update.module').then( m => m.UpdatePageModule)
+  },
 ];
 
 @NgModule({

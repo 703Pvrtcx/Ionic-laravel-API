@@ -1,0 +1,42 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Edit  {{product.name}}</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="start" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+       <img src="../../../../assets/img/Teklink/logo_image.png"/> 
+  <form [formGroup]='form'>
+  <ion-item>
+    <ion-label position= 'floating'>Name: </ion-label>
+    <ion-input formControlName='name'></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position= 'floating'>Price: </ion-label>
+    <ion-input formControlName='price'></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position= 'floating'>Category: </ion-label>
+    <ion-input formControlName='category' ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position= 'floating'>Image Url: </ion-label>
+    <ion-input formControlName='imageURL' ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position= 'floating'>Description: </ion-label>
+    <ion-textarea formControlName='description' ></ion-textarea>
+  </ion-item>
+<ion-button (click)="submitProduct()" expand="block" shape="round" [disabled]="form.invalid">
+Update {{product.name}}
+</ion-button>
+
+</form>
+</ion-content>

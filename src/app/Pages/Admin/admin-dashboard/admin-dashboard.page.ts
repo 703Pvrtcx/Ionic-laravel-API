@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class AdminDashboardPage implements OnInit {
 
   constructor() { }
-
+    segmentChanged(ev: any) {
+    console.log('Segment changed', ev);
+  }
   ngOnInit() {
   }
 
