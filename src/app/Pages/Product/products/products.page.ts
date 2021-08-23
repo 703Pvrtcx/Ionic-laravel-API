@@ -4,7 +4,6 @@ import { ProductsService } from 'src/app/Services/Products/products.service';
 import { Product } from './product.model';
 import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
-import { DetailComponent } from '../detail/detail.component';
 import { DetailsPage } from '../details/details.page';
 import { UpdatePage } from '../update/update.page';
 

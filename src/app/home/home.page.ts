@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { CrudService } from '../crud.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +12,7 @@ export class HomePage {
 
   registerForm: FormGroup;
   submitted = false;
-  constructor( private crudservice: CrudService,
+  constructor(
     public route: Router,
     private formBuilder: FormBuilder,
      public alertController: AlertController){}
@@ -43,13 +42,13 @@ export class HomePage {
         myFormData.append('username', this.registerForm.value.firstname);
         myFormData.append('email', this.registerForm.value.email);
         myFormData.append('password', this.registerForm.value.password);
-        this.crudservice.createUser(myFormData).subscribe((res: Response) => {
-          console.log(res);
-          console.log(this.registerForm.value);
-          this.presentAlert();
-        },error =>{
-          console.log(error);
-        });
+        // this.crudservice.createUser(myFormData).subscribe((res: Response) => {
+        //   console.log(res);
+        //   console.log(this.registerForm.value);
+        //   this.presentAlert();
+        // },error =>{
+        //   console.log(error);
+        // });
       }
   }
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
