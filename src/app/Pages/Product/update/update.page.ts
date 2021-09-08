@@ -21,6 +21,7 @@ export class UpdatePage implements OnInit {
   ngOnInit() {
       this.form =  new FormGroup({
         name : new FormControl(this.product.name,[Validators.required]),
+        slug : new FormControl(this.product.slug,[Validators.required]),
         price : new FormControl(this.product.price,[Validators.required]),
         category : new FormControl(this.product.category,[Validators.required]),
         imageURL : new FormControl(this.product.imageURL,[Validators.required]),

@@ -25,6 +25,7 @@ export class AddProductPage implements OnInit {
 ngOnInit() {
      this.form =  new FormGroup({
         name : new FormControl(null,[Validators.required]),
+        slug : new FormControl(null,[Validators.required]),
         price : new FormControl(null,[Validators.required]),
         category : new FormControl(null,[Validators.required]),
         imageURL : new FormControl(null,[Validators.required]),
