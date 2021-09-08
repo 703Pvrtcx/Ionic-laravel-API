@@ -47,7 +47,15 @@ const routes: Routes = [
   {
     path: 'update',
     loadChildren: () => import('./Pages/Product/update/update.module').then( m => m.UpdatePageModule)
+  },  {
+    path: 'register',
+    loadChildren: () => import('./pages/user/register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'sign-in',
+    loadChildren: () => import('./pages/user/sign-in/sign-in.module').then( m => m.SignInPageModule)
+  },
+
 ];
 
 @NgModule({
