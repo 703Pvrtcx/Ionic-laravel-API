@@ -12,8 +12,8 @@ import { AddProductPage } from './add-product.page';
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
     ReactiveFormsModule,
+    IonicModule,
     AddProductPageRoutingModule
   ],
   declarations: [AddProductPage]

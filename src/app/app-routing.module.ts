@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'register',
     pathMatch: 'full'
   },
   {
@@ -47,7 +47,8 @@ const routes: Routes = [
   {
     path: 'update',
     loadChildren: () => import('./Pages/Product/update/update.module').then( m => m.UpdatePageModule)
-  },  {
+  },
+  {
     path: 'register',
     loadChildren: () => import('./pages/user/register/register.module').then( m => m.RegisterPageModule)
   },

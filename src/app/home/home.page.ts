@@ -51,8 +51,7 @@ export class HomePage {
         // });
       }
   }
-  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
-  ngOnInit() {
+   ngOnInit() {
       //Add User form validations
       this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
