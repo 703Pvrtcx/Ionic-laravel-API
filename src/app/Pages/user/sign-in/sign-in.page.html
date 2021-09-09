@@ -1,9 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>sign-in</ion-title>
+    <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
+<ion-content class="ion-padding">
+  <img src="../../../../assets/img/Teklink/logo_image.png"/> 
+  <form [formGroup]='form'>
+  <ion-item>
+    <ion-label position= 'floating' >Email</ion-label>
+    <ion-input formControlName='email' > </ion-input>
+  </ion-item>
+   <ion-item>
+    <ion-label position= 'floating' >Password</ion-label>
+    <ion-input formControlName='password' > </ion-input>
+  </ion-item>
+
+  <ion-button (click)="submitLogin()" expand="block" shape="round" [disabled]="form.invalid">
+    Register
+    </ion-button>
+  </form>
 </ion-content>
