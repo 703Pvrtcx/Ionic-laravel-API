@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Product } from '../products/product.model';
 
-
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.page.html',

@@ -3,6 +3,7 @@ import { AuthenticationService } from 'src/app/Services/User/authentication.serv
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 
 
 
@@ -16,7 +17,8 @@ export class RegisterPage implements OnInit {
   form:  FormGroup;
   constructor(
     private AuthService: AuthenticationService,
-    private route: Router) {}
+    private route: Router,
+    private loadingCtrl: LoadingController) {}
 
 ngOnInit() {
   this.form =  new FormGroup({
@@ -27,6 +29,8 @@ ngOnInit() {
   });
   }
   async submitRegister(){
+    const loading = await this.loadingCtrl.create({message: ' Signing up...'});
+    loading.present();
     this.AuthService.register(this.form.value).
       pipe(take(1))
       .subscribe((res)=>{
@@ -34,9 +38,12 @@ ngOnInit() {
         console.log("Token: ",res['token']);
         console.log("User: ",res['user']);
         this.form.reset();
+        loading.dismiss();
         this.route.navigateByUrl('sign-in');
     },error =>{
-      console.log('Error === Error',error.error['errors']);
-    });
+        console.log('Error message:',error.error['errors']);
+        this.form.reset();
+        loading.dismiss();
+      });
   }
 }
