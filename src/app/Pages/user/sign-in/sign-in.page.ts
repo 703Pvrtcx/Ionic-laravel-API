@@ -3,7 +3,7 @@ import { AuthenticationService } from 'src/app/Services/User/authentication.serv
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 
 
 @Component({
@@ -17,12 +17,13 @@ export class SignInPage implements OnInit {
   constructor(
     private AuthService: AuthenticationService,
     private route: Router,
+    public alertController: AlertController,
     private loadingCtrl: LoadingController) {}
-ngOnInit() {
-  this.form =  new FormGroup({
-    email : new FormControl(null,[Validators.required]),
-    password : new FormControl(null,[Validators.required]), 
-  });
+  ngOnInit() {
+    this.form =  new FormGroup({
+        email : new FormControl(null,[Validators.required]),
+        password : new FormControl(null,[Validators.required]), 
+    });
   }
   async submitLogin(){
     const loading = await this.loadingCtrl.create({message: ' Logging in...'});
@@ -35,11 +36,20 @@ ngOnInit() {
              console.log("User: ",res['user']);
             this.form.reset();
             loading.dismiss();
+            this.presentAlert('Great!','Logged in successfully');
         },error =>{
-             console.log('Error message:',error.error['message']);
              this.form.reset();
              loading.dismiss();
+            this.presentAlert('Oops, something went wrong!',error.error['message']);
        });
+  }
+  async presentAlert(header,message) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
   }
 
 }

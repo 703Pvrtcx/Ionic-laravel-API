@@ -3,7 +3,7 @@ import { AuthenticationService } from 'src/app/Services/User/authentication.serv
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 
 
 
@@ -16,6 +16,7 @@ export class RegisterPage implements OnInit {
 
   form:  FormGroup;
   constructor(
+    public alertController: AlertController,
     private AuthService: AuthenticationService,
     private route: Router,
     private loadingCtrl: LoadingController) {}
@@ -39,11 +40,25 @@ ngOnInit() {
         console.log("User: ",res['user']);
         this.form.reset();
         loading.dismiss();
+        this.presentAlert('Great!','Account created successfully');  
         this.route.navigateByUrl('sign-in');
     },error =>{
-        console.log('Error message:',error.error['errors']);
-        this.form.reset();
+         this.form.reset();
         loading.dismiss();
+        this.presentAlert('Oops, something went wrong!',error.error['message']);
       });
   }
+
+  async presentAlert(header,message) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
+ 
+
+
 }
