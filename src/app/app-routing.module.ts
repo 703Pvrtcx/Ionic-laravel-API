@@ -55,7 +55,11 @@ const routes: Routes = [
   {
     path: 'sign-in',
     loadChildren: () => import('./pages/user/sign-in/sign-in.module').then( m => m.SignInPageModule)
+  },  {
+    path: 'dashboard',
+    loadChildren: () => import('./pages/user/dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
+
 
 ];
 
