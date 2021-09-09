@@ -27,11 +27,11 @@ ngOnInit() {
       pipe(take(1))
       .subscribe((res)=>{
             console.log('Success ===', res);
-            // console.log("Token: ",res['token']);
-            // console.log("User: ",res['user']);
+             console.log("Token: ",res['token']);
+             console.log("User: ",res['user']);
             this.form.reset();
         },error =>{
-             console.log('Error === Error',error.error['errors']);
+             console.log('Error === Error 1',error.error['message']);
        });
   }
 
