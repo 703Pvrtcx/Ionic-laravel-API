@@ -37,6 +37,7 @@ export class SignInPage implements OnInit {
             this.form.reset();
             loading.dismiss();
             this.presentAlert('Great!','Logged in successfully');
+            this.route.navigateByUrl('dashboard');
         },error =>{
              this.form.reset();
              loading.dismiss();
