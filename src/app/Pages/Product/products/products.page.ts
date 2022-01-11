@@ -16,8 +16,9 @@ export class ProductsPage implements OnInit {
 
   products$: Observable<Product[]>;
   constructor(
-    private modalCtrl: ModalController,
     private productssService: ProductsService,
+    private modalCtrl: ModalController,
+  
     private loadingCtrl: LoadingController, ) { }
 
   async ngOnInit() {
@@ -30,7 +31,9 @@ export class ProductsPage implements OnInit {
              loading.dismiss();
             return product;
           })
+          
        );
+       loading.dismiss();
        console.log(this.products$);
   }
   async openDetailModal(product: Product){

@@ -1,0 +1,141 @@
+
+
+
+ <ion-header>
+  <ion-toolbar color="secondary">  
+  
+
+
+    <ion-buttons slot="end" >
+      <ion-button (click)="logUserOut()" color="dark">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="profile-content"  [style.backgroudColor]="userAccount.getRole()">
+  <ion-grid  *ngIf="!isEdit" >
+    
+    <ion-card color="primary">
+                  
+    <ion-row style="text-align: center;">
+     
+      <ion-col sizeSm="12" sizeMd="8" sizeLg="6"  >
+        <ion-card-subtitle [style.backgroudColor]="userAccount.getRole()">{{userAccount.getRole() | uppercase}} </ion-card-subtitle>
+          
+            <ion-avatar style="height: 150px; width: 150px; margin: auto;">
+              <img *ngIf="!userAccount.getPhotoURL()" src="../../../../assets/dp.png">  
+              <img *ngIf="userAccount.getPhotoURL()" [src]="userAccount.getPhotoURL()">  
+              
+            </ion-avatar>
+            
+            <ion-button fill="outline" color="light" shape="round" (click)="uploadPhoto($event)" >Update Photo</ion-button>
+          </ion-col> 
+
+          <ion-col sizeSm="12"  sizeMd="8" sizeLg="6" style="text-align: center;">
+              <ion-list lines="none" >
+                <ion-item >
+                  <ion-icon size="medium" name="person"></ion-icon>
+                  <ion-card-subtitle>{{userAccount.getFirstname() | uppercase}} {{userAccount.getLastname() | uppercase}}</ion-card-subtitle>
+                </ion-item>
+                <ion-item >
+                  <ion-icon size="medium" name="mail"></ion-icon>
+                  <ion-card-subtitle>{{userAccount.getEmail()}}</ion-card-subtitle>
+            </ion-item>
+                <ion-item >
+                  <ion-icon size="medium" name="call"></ion-icon>
+                  <ion-card-subtitle>{{userAccount.getPhone()}}</ion-card-subtitle>
+                </ion-item>
+                <ion-item >
+                  <ion-icon size="medium" name="person-outline"></ion-icon>
+                  <ion-card-subtitle>{{userAccount.getGender()| uppercase}}</ion-card-subtitle>
+                </ion-item>
+              </ion-list>
+              <ion-button  *ngIf="!isEdit;" color="light" (click)="this.isEdit = true" expand="block" fill="outline" shape="round">
+                Update Profile
+              </ion-button>
+          </ion-col>
+         
+        
+        </ion-row>
+        
+          
+        </ion-card>
+
+      
+      </ion-grid>
+
+      <ion-grid fixed>
+          <ion-row #elseBlock *ngIf="isEdit" justify-content-center class="ion-align-self-center"> 
+            <ion-col size-lg="10" offset-lg="1">
+              <ion-card-subtitle>Edit Information</ion-card-subtitle>
+                    <ion-list lines="full">
+                     <form [formGroup]="updateUserForm" (ngSubmit)="updateForm()">
+             <ion-item class="login-input ion-margin">
+               <ion-card-subtitle position="stacked">First Name</ion-card-subtitle>
+               <ion-input formControlName="firstname" [placeholder]="userAccount.getFirstname()" type="text" required ></ion-input>
+             </ion-item>
+             <div class="error-container">
+               <ng-container *ngFor="let validation of validation_messages.firstname">
+                 <div class="error-message" *ngIf="updateUserForm.get('firstname').hasError(validation.type) && (updateUserForm.get('firstname').dirty || updateUserForm.get('firstname').touched)">
+                   <ion-icon name="information-circle-outline"></ion-icon>
+                   <span>{{ validation.message }}</span>
+                 </div>
+               </ng-container>
+             </div>
+             <ion-item class="login-input ion-margin">
+               <ion-card-subtitle position="stacked">Last Name</ion-card-subtitle>
+               <ion-input formControlName="lastname" [placeholder]="userAccount.getLastname()"  type="text" required>
+               </ion-input>
+             </ion-item>
+             <div class="error-container">
+               <ng-container *ngFor="let validation of validation_messages.lastname">
+                 <div class="error-message" *ngIf="updateUserForm.get('lastname').hasError(validation.type) && (updateUserForm.get('lastname').dirty || updateUserForm.get('lastname').touched)">
+                   <ion-icon name="information-circle-outline"></ion-icon>
+                   <span>{{ validation.message }}</span>
+                 </div>
+               </ng-container>
+             </div>
+       
+             <ion-item class="login-input ion-margin">
+               <ion-card-subtitle position="stacked">Mobile</ion-card-subtitle>
+               <ion-input (keypress)="keyPress($event)" formControlName="phone" [placeholder]="userAccount.getPhone()"  type="text"required>
+               </ion-input>
+    
+             </ion-item>
+             <div class="error-container">
+               <ng-container *ngFor="let validation of validation_messages.phone">
+                 <div class="error-message" *ngIf="updateUserForm.get('phone').hasError(validation.type) && (updateUserForm.get('phone').dirty || updateUserForm.get('phone').touched)">
+                   <ion-icon name="information-circle-outline"></ion-icon>
+                   <span>{{ validation.message }}</span>
+                 </div>
+               </ng-container>
+     </div>
+             <ion-row>
+                  <ion-col>
+                 <ion-button fill="solid" class="ion-margin"  color="light" shape="round" (click)="isEdit = false" expand="block">
+                   Cancel
+                 </ion-button>
+               </ion-col>
+               <ion-col>
+                 <ion-button [disabled]="!updateUserForm.valid" type="submit" color="success" class="ion-margin" shape="round" expand="block">Update</ion-button>
+                 <div class="error-container" *ngIf="submitError">
+                   <div class="error-message">
+                     <ion-icon name="information-circle-outline"></ion-icon>
+                     <span>{{ submitError }}</span>
+                   </div>
+                 </div>
+               </ion-col>
+            
+             </ion-row>
+                    </form>
+               </ion-list>
+           </ion-col> 
+           
+          </ion-row>
+      </ion-grid>
+</ion-content>
+
+

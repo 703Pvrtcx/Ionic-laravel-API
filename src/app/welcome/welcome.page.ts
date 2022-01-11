@@ -16,10 +16,11 @@ export class WelcomePage implements OnInit {
 
   ngOnInit() {
   }
-  onClick(){}
-
-  goToHome(){
-   this.route.navigateByUrl('home');
+  onClick(){
+    this.route.navigateByUrl('user-login');
   }
 
+  goToHome(){
+   this.route.navigateByUrl('user-login');
+  }
 }

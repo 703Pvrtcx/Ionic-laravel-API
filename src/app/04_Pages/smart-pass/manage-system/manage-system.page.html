@@ -1,0 +1,93 @@
+
+
+<ion-content>
+  <ion-grid fixed>
+
+<ion-row text>
+
+  <ion-card color="tertiary" style="width: 100%;">
+    <ion-card-header>
+      <ion-card-title>All Devices</ion-card-title>
+      <ion-item color="warning" *ngIf="!tempState"  >
+        <ion-text>Device: 
+          {{(active|async)?.name|uppercase}}</ion-text>
+          <ion-button slot="end" (click)="changeState()" expand="block" color="success" shape="round">
+           
+          <ion-icon name="wifi"></ion-icon>
+            Connect
+          </ion-button>
+      </ion-item>
+      <ion-item color="success" *ngIf="tempState" >
+        <ion-text>Device: 
+          {{(active|async)?.name|uppercase}}</ion-text>
+          <ion-button (click)="changeState()" slot="end" expand="block" color="danger" shape="round">
+           
+          <ion-icon name="wifi"></ion-icon>
+            Disconnect
+          </ion-button>
+      </ion-item>
+    </ion-card-header>
+  </ion-card> 
+</ion-row>
+  </ion-grid>
+
+  <ion-grid fixed *ngIf="tempState">
+    <h1 class="ion-text-center">Operations</h1>
+    <ion-row >
+
+      <ion-col   size="6">
+        
+        <ion-list color="tertiary">
+          <ion-list-header>
+            Internal
+          </ion-list-header>
+          <ion-item >
+            Detect Face
+            <ion-buttons slot="end" >
+              <ion-toggle></ion-toggle>
+            </ion-buttons>
+          </ion-item>
+          <ion-item >
+            Server Room 
+            
+            <ion-buttons slot="end" >
+              <ion-toggle></ion-toggle>
+            </ion-buttons>
+        </ion-item>
+
+        </ion-list>
+        
+        
+      </ion-col>
+      <ion-col   size="6">
+        
+        <ion-list>
+          <ion-list-header>
+            External
+          </ion-list-header>
+          <ion-item >
+             Boom Gate
+            
+            <!-- <ion-toggle></ion-toggle> -->
+            <ion-buttons slot="end" >
+              <ion-toggle></ion-toggle>
+
+            </ion-buttons>
+          </ion-item>
+          <ion-item >
+            Office Entrance
+            <ion-buttons slot="end" >
+              <ion-toggle></ion-toggle>
+
+            </ion-buttons>
+          </ion-item>
+
+        </ion-list>
+        
+      
+      </ion-col>
+    </ion-row>
+    
+  </ion-grid>
+
+</ion-content>

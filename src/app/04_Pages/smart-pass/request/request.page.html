@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Manage Requests</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="userAccount.getRole()=='admin'" >
+  <ion-list *ngFor="let item of requestList">
+    <div class="ion-text-justify">
+    </div>
+    <ion-row>
+      <ion-col size="12">
+        
+      <p class="ion-text-center"> <strong>{{item.firstname | uppercase}}</strong> has made request to change from <b>{{item.role_id}}</b>
+        to <b>{{item.newRole_id}}</b>
+       </p>  
+       <p class="ion-text-center"> {{item.created_at}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" fill="outline" shape="round" (click)="approve(item)">
+          Approve
+        </ion-button>
+      </ion-col>
+      
+      <ion-col size="6">
+        <ion-button (click)="decline(item.user_id)" expand="block" color="danger" fill="outline" shape="round">
+          Decline
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>
+
+<ion-content  *ngIf="userAccount.getRole()!='admin'" >
+  <ion-label>Request new role</ion-label>
+  <form [formGroup]= "requestForm" (ngSubmit)="makeRequest()">
+    <ion-item class="ion-no-margin input-item" >
+
+      <ion-label position="stacked">Change from {{userAccount.getRole()}}</ion-label>
+      <ion-select formControlName="newRequest">
+        <ion-select-option  value="admin">Admin</ion-select-option>
+        <ion-select-option  value="employee">Employee</ion-select-option>
+        <ion-select-option value="user">User</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-button (click)="makeRequest()" [disabled]="requestForm.invalid">
+        <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
+        &nbsp;Make request
+      </ion-button>
+      <!-- <ion-button (click)="cancel()" expand="block"  shape="round">
+        Cancel
+      </ion-button> -->
+    </ion-item>
+  </form>
+
+  
+</ion-content>

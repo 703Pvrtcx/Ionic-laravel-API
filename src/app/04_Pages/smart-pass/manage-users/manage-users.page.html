@@ -1,0 +1,130 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>User Management</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="start" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+ 
+</ion-header>
+
+<!-- <ion-content>
+  <form [formGroup]= "studentForm" (ngSubmit)="CreateRecord()">
+
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input formControlName="Name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Age</ion-label>
+      <ion-input formControlName="Age"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Address</ion-label>
+      <ion-input formControlName="Address"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-button (click)="CreateRecord()" [disabled]="studentForm.invalid">
+        <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
+        &nbsp;Create Record
+      </ion-button>
+    </ion-item>
+
+  </form>
+</ion-content> -->
+
+<ion-content>
+    
+    <ion-card class="ion-border" color="tertiary" *ngFor="let item of studentList"> 
+      <ion-card-content *ngIf="!item.isEdit; else elseBlock" >
+          <ion-grid fixed>
+            <ion-row>                            
+              <ion-col size="3">
+                <ion-avatar style="width: 50px;height: 50px;">
+                  <img [src]= "item.photoURL"/>
+                </ion-avatar>
+                <p>Role:  {{item.role_id}}</p>
+                
+               </ion-col>
+               <ion-col size="8">
+                <p>First Name:       {{item.firstname}}</p>
+                <p>Last Name:      {{item.lastname}}</p>
+                <p>Email:      {{item.email}}</p>
+                <p>Gender:      {{item.gender}}</p>
+
+              </ion-col>
+              <ion-button shape="round" color="secondary" size="small" (click)="EditRecord(item)">
+                <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
+              </ion-button>
+              <ion-button shape="round" color="danger" size="small" (click)="RemoveRecord(item.user_id)">
+                <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
+      
+              </ion-button>
+      
+             </ion-row>
+          </ion-grid> 
+      </ion-card-content>
+
+      <ng-template #elseBlock>
+        <ion-card-header>
+          <ion-card-title>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  Edit
+                </ion-col>
+                <ion-col>
+                  <ion-button fill="solid" color="medium" size="small" (click)="item.isEdit = false">
+                    Cancel
+                  </ion-button>
+                </ion-col>
+                <ion-col>
+                  <ion-button fill="solid" color="success" size="small" (click)="UpdateRecord(item)">
+                    Update
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label><strong>First Name</strong></ion-label>
+            <ion-input type="text" placeholder="{{item.firstname}}" [(ngModel)]="item.EditFirstname"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><strong>Last Name</strong></ion-label>
+            <ion-input type="text" placeholder="{{item.lastname}}" [(ngModel)]="item.EditLastname"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><strong>Phone</strong></ion-label>
+            <ion-input type="text" placeholder="{{item.phone}}" [(ngModel)]="item.EditPhone"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><strong>Gender</strong></ion-label>
+            <ion-input type="text" placeholder="{{item.gender}}" [(ngModel)]="item.EditGender"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><strong>Role</strong></ion-label>
+            <!-- <ion-input type="text" placeholder="{{item.role_id}}" [(ngModel)]="item.EditRole"></ion-input> -->
+         
+            <ion-select [(ngModel)]="item.EditRole">
+              <ion-select-option  value="admin">Admin</ion-select-option>
+              <ion-select-option  value="employee">Employee</ion-select-option>
+              <ion-select-option value="user">User</ion-select-option>
+            </ion-select>
+         
+          </ion-item>
+        </ion-card-content>
+      </ng-template>
+    </ion-card>
+
+  
+
+
+  </ion-content>

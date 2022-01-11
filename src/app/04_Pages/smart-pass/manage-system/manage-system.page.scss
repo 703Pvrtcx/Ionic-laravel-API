@@ -1,0 +1,18 @@
+ion-content {
+    --background: linear-gradient(90deg, rgba(43,90,148,1) 0%,
+     rgba(45,112,229,1) 35%, rgba(45,112,229,1) 100%);
+   }
+ .online{
+   color: green;
+   background-color: hotpink;
+ }
+ .offline{
+  color: green;
+  
+  background-color: rgb(233, 236, 41);
+}
+ion-list{
+  background-color: rgba(48, 102, 194, 0.959);
+  border: 1px solid goldenrod;
+  border-radius: 25px 25px 25px 25px;
+}

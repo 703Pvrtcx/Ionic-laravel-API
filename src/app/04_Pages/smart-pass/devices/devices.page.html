@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>All Devices</ion-title>
+    <ion-buttons slot="end">
+      <ion-button  routerLink="/make-state">
+        <ion-icon slot="start" name="add"></ion-icon>
+        Add Device
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list class="ios list-ios hydrated">
+   
+    <ion-item *ngFor="let booking of Bookings" class="user-list">
+      <ion-label>
+        <h5>
+          <ion-icon name="device"></ion-icon> {{booking.name}}
+        </h5>
+        <p>
+          <!-- <ion-icon name="number"></ion-icon> {{booking.value}} -->
+        </p>
+      </ion-label>
+
+      <div class="item-note" item-end>
+        <button ion-button clear [routerLink]="['/edit-state/', booking.$key]">
+          <ion-icon name="create" style="zoom:2.0"></ion-icon>
+        </button>
+        <button ion-button clear (click)="deleteBooking(booking.$key)">
+          <ion-icon name="trash" style="zoom:2.0"></ion-icon>
+        </button>
+      </div>
+    </ion-item>
+    <ion-card>
+      <ion-router-outlet></ion-router-outlet>
+    </ion-card>
+  </ion-list>
+
+  <div>
+      
+  </div>

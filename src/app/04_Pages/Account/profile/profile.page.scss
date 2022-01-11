@@ -1,0 +1,78 @@
+.admin{
+
+  background-color: blue;
+}
+.user{
+  
+  background-color:red;
+}
+
+ion-item{
+  --background:  rgba(16, 136, 255, 0.884);
+  //  color: white;
+}
+ion-content {
+  --background: linear-gradient(90deg, rgba(43,90,148,1) 0%,
+   rgba(45,112,229,1) 35%, rgba(45,112,229,1) 100%);
+ }
+
+.profile-content {
+    // --background: rgb(139, 135, 135) url('./../../../../../assets/img/scones.jpg') no-repeat center center / cover;
+  
+    // --background: linear-gradient(90deg, rgb(31, 57, 88) 0%,
+    // rgb(41, 62, 95) 35%, rgb(77, 137, 241) 100%);
+  
+    --padding-bottom: 16px;
+      --padding-end: 16px;
+      --padding-start: 16px;
+      --padding-top: 16px;
+    
+      .user-item{
+        border-radius: 20px 20px 28px 28px;
+        opacity: 0.8;
+        --background: linear-gradient(90deg, rgb(31, 57, 88) 0%,
+        rgb(41, 62, 95) 35%, rgb(77, 137, 241) 100%);
+        --color: var(--ion-color-light);
+      }
+  
+      .user-image {
+        //border-radius: 4%;
+        border-radius: 100px 100px 100px 100px;
+        height: 100px;
+      }
+    
+      .user-details-wrapper {
+        justify-content: center;
+    
+        .user-image-wrapper {
+          text-align: center;
+        }
+    
+        .user-info-wrapper {
+          text-align: center;
+        }
+      }
+    }
+
+    .p-s1{
+      .p-title{
+        font-size: 2.5rem;
+      }
+      color: #555252;
+      ion-icon{
+        font-size: 13rem;
+      }
+    
+    }
+    ion-header{
+      box-shadow: 0px 2px 4px rgba(0,0,0, 0.10);
+    }
+    
+    .custom-card{
+      box-shadow: 0px 2px 6px rgba(0,0,0, 0.20);
+    }
+    .p-list{
+      color:hsl(0, 0%, 29%);
+    }
+
+   

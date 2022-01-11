@@ -9,7 +9,7 @@ import { Product } from '../../Pages/Product/products/product.model';
 export class ProductsService {
   editProduct: boolean;
 
-  apiUrl ='http://localhost:8000/api';
+  apiUrl ='i703-partco-default-rtdb.firebaseio.com';
 
   constructor(private http: HttpClient) {
     this.editProduct=false;

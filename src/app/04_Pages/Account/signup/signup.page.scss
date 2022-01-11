@@ -1,0 +1,30 @@
+.text{
+    position: absolute;
+width: 237.91px;
+height: 192.19px;
+left: calc(50% - 237.91px/2 - 1.04px);
+top: calc(50% - 192.19px/2 + 7.1px);
+
+font-family: Ropa Sans;
+font-style: normal;
+font-weight: normal;
+font-size: 48px;
+line-height: 51px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #361D34;
+
+border: 1px solid rgba(245, 6, 207, 0.68);
+transform: rotate(-0.5deg);
+
+}
+.container{
+    
+position: relative;
+width: 240px;
+height: 204px;
+
+background: rgba(2, 17, 70, 0.58);
+}
